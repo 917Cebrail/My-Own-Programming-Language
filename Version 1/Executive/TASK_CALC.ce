@@ -1,0 +1,12 @@
+ARG ADDRESS : 0 , ADDRESS : 1 , ADD
+ARG ADDRESS : 0 , ADDRESS : 1 , SUB
+ARG ADDRESS : 0 , ADDRESS : 1 , DIV
+ARG ADDRESS : 0 , ADDRESS : 1 , MUL
+ARG ADDRESS : 0 , ADDRESS : 1 , POW
+PNT ----------
+FOR 10 , ADDRESS 0 : ++
+FOR 10 , ADDRESS 1 : --
+PRINT 0
+PRINT 1
+PNT ----------
+IF ADDRESS 0 == ADDRESS 1 -> Yeah, its true --> Holy shit, not working
