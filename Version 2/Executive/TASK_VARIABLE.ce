@@ -1,0 +1,6 @@
+VAR X = 5 , ADDRESS : 0
+VAR Y = 9 , ADDRESS : 1
+PRINT 0
+PRINT 1
+PNT ----------
+FILE : TASK_CALC.ce
