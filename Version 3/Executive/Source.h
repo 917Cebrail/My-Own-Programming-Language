@@ -33,7 +33,6 @@ int label_count = 0;
 
 int DEBUG_MODE = 0;
 
-// RAM temizleme
 void clear_memory() {
     memset(ram, 0, sizeof(ram));
     memset(float_ram, 0, sizeof(float_ram));
@@ -43,7 +42,6 @@ void clear_memory() {
         printf("Memory cleared.\n");
 }
 
-// Etiket tanımlama
 void define_label(const char *label, int line_number) {
     if (label_count < LABEL_COUNT) {
         strcpy(labels[label_count].label, label);
@@ -54,17 +52,15 @@ void define_label(const char *label, int line_number) {
     }
 }
 
-// Etiket bulma
 int find_label(const char *label) {
     for (int i = 0; i < label_count; i++) {
         if (strcmp(labels[i].label, label) == 0) {
             return labels[i].line_number;
         }
     }
-    return -1; // Label bulunamadı
+    return -1;
 }
 
-// Komut çalıştırıcı
 void Compiler(char *code) {
     if (DEBUG_MODE)
         printf("Executing: %s\n", code);
@@ -90,14 +86,13 @@ void Compiler(char *code) {
     else if (strncmp(code, "LABEL", 5) == 0) {
         char label[50];
         sscanf(code, "LABEL %s", label);
-        define_label(label, __LINE__); // Etiket satır numarası ile kaydedilir
+        define_label(label, __LINE__);
     }
     else if (strncmp(code, "GOTO", 4) == 0) {
         char label[50];
         sscanf(code, "GOTO %s", label);
         int target_line = find_label(label);
         if (target_line != -1) {
-            // Program akışını değiştirmek için bir sistem tasarlanmalı
             printf("Jumping to label: %s at line %d\n", label, target_line);
         } else {
             printf("Label not found: %s\n", label);
